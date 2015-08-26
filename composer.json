@@ -18,10 +18,13 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "stof/doctrine-extensions-bundle": "dev-master"
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "friendsofsymfony/rest-bundle": "dev-master",
+        "jms/serializer-bundle": "dev-master"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpunit/phpunit": "4.8.*"
     },
     "scripts": {
         "post-root-package-install": [

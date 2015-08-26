@@ -2,18 +2,27 @@
 
 namespace fortuneBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations\Get;
 
-class DefaultController extends Controller
-{
+class DefaultController extends FOSRestController {
+
     /**
-     * @Route("/hello/{name}")
-     * @Template()
+     * Get action
+     * @var integer $id Id of the entity
+     * @return array
+     * 
+     * @Get("/quotes")
      */
-    public function indexAction($name)
-    {
-        return array('name' => $name);
+    public function indexAction() {
+
+        $repository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('fortuneBundle:Quote');
+
+        $data = $repository->findAll();
+
+        return $data;
     }
+
 }

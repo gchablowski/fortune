@@ -1,5 +1,3 @@
 fortune:
-    resource: "@fortuneBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
+    resource: fortuneBundle\Controller\DefaultController
+    type:     rest

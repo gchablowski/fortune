@@ -85,3 +85,31 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# FOS\RestBundle configuration
+sensio_framework_extra:
+    view:
+        annotations: false
+    router:  
+        annotations: true 
+fos_rest:
+    serializer:
+        serialize_null: true
+    view:
+        view_response_listener: force
+        formats:
+            json: true
+        force_redirects:
+            json: true
+    body_listener: true
+    param_fetcher_listener: force
+    allowed_methods_listener: true
+    access_denied_listener:
+        json: true
+    routing_loader:
+        default_format: json
+        include_format: false
+    exception:
+        codes:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
+        messages:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
