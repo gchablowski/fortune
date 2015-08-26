@@ -20,7 +20,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "stof/doctrine-extensions-bundle": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
-        "jms/serializer-bundle": "dev-master"
+        "jms/serializer-bundle": "dev-master",
+        "eightpoints/guzzle-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
