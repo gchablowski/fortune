@@ -20,8 +20,8 @@ class DefaultController extends FOSRestController {
                 ->getManager()
                 ->getRepository('fortuneBundle:Quote');
 
-        $data = $repository->findAll();
-
+        $data = $repository->myFindAllQuotes();
+      
         return $data;
     }
 

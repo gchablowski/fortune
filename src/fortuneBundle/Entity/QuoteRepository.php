@@ -12,4 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuoteRepository extends EntityRepository
 {
+    protected $name = "quote"; //short name used for the query
+
+    /**
+     * Find all quotes by date inversed
+     * 
+     * @return  object
+     */
+
+    public function myFindAllQuotes() {
+        // prepare the query
+        $q = $this->createQueryBuilder($this->name)
+                ->orderBy($this->name.".date", 'DESC')
+        ;
+       
+        return $q->getQuery()->getResult();
+    }
 }
