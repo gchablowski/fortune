@@ -7,14 +7,14 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use fortuneBundle\Entity\Quote;
+use Symfony\Component\Console\Input\ArrayInput;
 
 class GetQuoteCommand extends ContainerAwareCommand {
 
     protected function configure() {
         $this
-                ->setName('getquote')
-                ->setDescription('get a quote for today')
+                ->setName('getQuote')
+                ->setDescription('get a quote from a service')
         ;
     }
 
@@ -26,29 +26,16 @@ class GetQuoteCommand extends ContainerAwareCommand {
         //recuperate the quote on json
         $sQuoTeresponse = json_decode($oResponse->getBody());
 
-        // create a new quote object and add it to data base
-        $oQuote = new Quote;
-        $oQuote->setText($sQuoTeresponse->quote);
-        $oQuote->setAuthor($sQuoTeresponse->author);
+        $command = $this->getApplication()->find('setQuote');
 
-        $oValidator = $this->getContainer()->get('validator');
-        $aErrors = $oValidator->validate($oQuote);
+        $arguments = array(
+            'command' => 'setQuote',
+            'text' => $sQuoTeresponse->quote,
+            'author' => $sQuoTeresponse->author,
+        );
 
-        if (count($aErrors) > 0) {
-            //show the error
-            $output->writeln("Errors list :");
-            for ($i=0; $i < count($aErrors); $i++) {
-                $oError = $aErrors[$i];
-                $output->writeln(($i+1)."-".$oError->getMessage()."");
-            }
-        } else {
-            //persist the new quote
-            $em = $this->getContainer()->get('doctrine')->getManager();
-            $em->persist($oQuote);
-            $em->flush();
-
-            $output->writeln("Done");
-        }
+        $setQuoteInput = new ArrayInput($arguments);
+        $returnCode = $command->run($setQuoteInput, $output);
     }
 
 }
