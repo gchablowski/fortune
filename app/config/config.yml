@@ -113,3 +113,18 @@ fos_rest:
             'Symfony\Component\Routing\Exception\ResourceNotFoundException': 404
         messages:
             'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+
+# 8p/GuzzleBundle configuration
+guzzle:
+    clients:
+        api_qod:
+            base_url: "http://quotesondesign.com/api/3.0/"
+            headers:
+                Accept: "application/json"
+
+            # guzzle client options (full description here: http://guzzle.readthedocs.org/en/latest/request-options.html)
+            # NOTE: "headers" option is not accepted here as it is provided as described above.
+            options:
+                timeout: 30
+
+    

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
             new fortuneBundle\fortuneBundle(),
         );
 

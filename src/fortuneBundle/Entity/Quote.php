@@ -102,19 +102,6 @@ class Quote
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Quote
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
      * Get date
      *
      * @return \DateTime 
