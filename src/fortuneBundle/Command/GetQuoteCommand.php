@@ -25,18 +25,30 @@ class GetQuoteCommand extends ContainerAwareCommand {
         $oResponse = $oClient->get('api-3.0.json');
         //recuperate the quote on json
         $sQuoTeresponse = json_decode($oResponse->getBody());
-        
-        // create a new quote object and add it to data base
-        $quote = new Quote;
-        $quote->setText($sQuoTeresponse->quote);
-        $quote->setAuthor($sQuoTeresponse->author);
-        
-        //persist the new quote
-        $em = $this->getContainer()->get('doctrine')->getManager();
-        $em->persist($quote);
-        $em->flush();
 
-        $output->writeln("Done");
+        // create a new quote object and add it to data base
+        $oQuote = new Quote;
+        $oQuote->setText($sQuoTeresponse->quote);
+        $oQuote->setAuthor($sQuoTeresponse->author);
+
+        $oValidator = $this->getContainer()->get('validator');
+        $aErrors = $oValidator->validate($oQuote);
+
+        if (count($aErrors) > 0) {
+            //show the error
+            $output->writeln("Errors list :");
+            for ($i=0; $i < count($aErrors); $i++) {
+                $oError = $aErrors[$i];
+                $output->writeln(($i+1)."-".$oError->getMessage()."");
+            }
+        } else {
+            //persist the new quote
+            $em = $this->getContainer()->get('doctrine')->getManager();
+            $em->persist($oQuote);
+            $em->flush();
+
+            $output->writeln("Done");
+        }
     }
 
 }

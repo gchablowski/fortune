@@ -4,12 +4,14 @@ namespace fortuneBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Quote
  *
  * @ORM\Table(name="fortune_quote")
  * @ORM\Entity(repositoryClass="fortuneBundle\Entity\QuoteRepository")
+ * @UniqueEntity("text")
  */
 class Quote
 {
