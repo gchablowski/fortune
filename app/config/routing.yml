@@ -1,0 +1,5 @@
+fortune:
+    resource: "@fortuneBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
