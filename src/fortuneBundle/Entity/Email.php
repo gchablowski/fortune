@@ -13,6 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="fortuneBundle\Entity\EmailRepository")
  * @UniqueEntity("email")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Email {
 
@@ -33,6 +34,13 @@ class Email {
      * @ORM\Column(name="email", type="string", length=500)
      */
     private $email;
+
+    /**
+     * @var string
+
+     * @ORM\Column(name="token", type="string", length=500)
+     */
+    private $token;
 
     /**
      * @var boolean
@@ -57,12 +65,24 @@ class Email {
     public function getId() {
         return $this->id;
     }
-    
+
+    /**
+     * contstructor
+     */
     function __construct() {
         $this->active = false;
     }
 
-        /**
+    /**
+     * Create token before persist
+     * 
+     * @ORM\PrePersist
+     */
+    public function setTokenValue() {
+        $this->token = hash('sha256',$this->email);
+    }
+
+    /**
      * Set email
      *
      * @param string $email
@@ -104,15 +124,13 @@ class Email {
         return $this->active;
     }
 
-
     /**
      * Set create
      *
      * @param \DateTime $create
      * @return Email
      */
-    public function setCreate($create)
-    {
+    public function setCreate($create) {
         $this->create = $create;
 
         return $this;
@@ -123,8 +141,31 @@ class Email {
      *
      * @return \DateTime 
      */
-    public function getCreate()
-    {
+    public function getCreate() {
         return $this->create;
+    }
+
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Email
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string 
+     */
+    public function getToken()
+    {
+        return $this->token;
     }
 }
