@@ -49,5 +49,5 @@ assetic:
 
 # Hipaway-Travel/HipMandrillBundle              
 hip_mandrill:
-    disable_delivery: true 
+    disable_delivery: false
     

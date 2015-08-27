@@ -61,11 +61,15 @@ class DefaultController extends FOSRestController {
             $message->addTo($email->getEmail())
                     ->setSubject('Validate your registration')
                     ->setHtml($this->renderView('fortuneBundle:Default:registration.html.twig', array('token' => $email->getToken())))
-                    ->setSubaccount('Project');
+                    ;
 
-            $result = $dispatcher->send($message);
-
-            return array("message" => "Your email have been saved. To proceed your registration a validation mail have been send to you.");
+            $dispatcher->send($message);
+            
+            return array(
+                "code" => 200,
+                "message" => "Your email have been saved. To proceed your registration a validation mail have been send to you.",
+                "errors" => null
+            );
         }
 
         return array(
@@ -97,9 +101,9 @@ class DefaultController extends FOSRestController {
         $em->flush();
 
         // return a message
-        $message = $entity->getEmail()." have been desactivated";
+        $message = $entity->getEmail() . " have been desactivated";
         if ($activate) {
-            $message = $entity->getEmail()." have been activated";
+            $message = $entity->getEmail() . " have been activated";
         }
 
         return array(
