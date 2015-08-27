@@ -121,10 +121,12 @@ guzzle:
             base_url: "http://quotesondesign.com/api/3.0/"
             headers:
                 Accept: "application/json"
-
-            # guzzle client options (full description here: http://guzzle.readthedocs.org/en/latest/request-options.html)
-            # NOTE: "headers" option is not accepted here as it is provided as described above.
             options:
                 timeout: 30
-
-    
+                
+# Hipaway-Travel/HipMandrillBundle              
+hip_mandrill:
+    api_key: %mandril_api_key%
+    default:
+        sender: fortune@example.com
+        sender_name: Fortune

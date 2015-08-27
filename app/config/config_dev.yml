@@ -46,3 +46,8 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+# Hipaway-Travel/HipMandrillBundle              
+hip_mandrill:
+    disable_delivery: true 
+    

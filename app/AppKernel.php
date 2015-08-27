@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
+            new Hip\MandrillBundle\HipMandrillBundle(),
             new fortuneBundle\fortuneBundle(),
         );
 
