@@ -6,7 +6,8 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Validator\Constraints\Email;
+use fortuneBundle\Entity\Email;
+use fortuneBundle\Form\EmailType;
 
 class DefaultController extends FOSRestController {
 
@@ -30,30 +31,33 @@ class DefaultController extends FOSRestController {
     /**
      * post email action
      * @param Request $request
-     * @return Product|array
+     * @return array()
      *
      * @Post("/add/email")
      */
     public function emailsAction(Request $request) {
-        $form = $this->createFormBuilder(array(), array('csrf_protection' => false))
-                ->add('email', 'text', array(
-                    'constraints' => new Email()
-                ))
-                ->setMethod('POST')
-                ->getForm();
+        //create new object
+        $email = new Email();
+
+        //create form
+        $form = $this->createForm(new EmailType(), $email);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // Les données sont un tableau avec les clés "name", "email", et "message"
-            $data = $form->getData();
-            var_dump($form->getData());
-            die();
+            //persist the new email
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($email);
+            $em->flush();
+
+            return array("message" => "Your email have been saved. To proceed your registration a validation mail have been send to you.");
         }
 
         return array(
             'form' => $form,
         );
     }
+    
+    
 
 }
