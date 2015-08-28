@@ -18,6 +18,7 @@ class DefaultController extends FOSRestController {
      * Get qotes action
      * @return array
      *
+     * @Get("/")
      * @Get("/quotes", name="quotes")
      */
     public function indexAction() {

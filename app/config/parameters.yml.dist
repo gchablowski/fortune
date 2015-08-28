@@ -14,6 +14,13 @@ parameters:
     mailer_host:       127.0.0.1
     mailer_user:       ~
     mailer_password:   ~
+    mailer_port:       ~
 
     # A secret key that's used to generate certain security-related tokens
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    secret:            43f2fc4da95a73348feac31348d5a907cae36585
+    
+    # Mandril API KEY
+    mandril_api_key:   ~
+    
+    # url for the email that validate the inscription of the email
+    urlfrontvalidate : ~

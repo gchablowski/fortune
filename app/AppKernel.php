@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new EightPoints\Bundle\GuzzleBundle\GuzzleBundle(),
             new Hip\MandrillBundle\HipMandrillBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new fortuneBundle\fortuneBundle(),
         );
 

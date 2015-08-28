@@ -133,3 +133,11 @@ hip_mandrill:
     default:
         sender: fortune@example.com
         sender_name: Fortune
+        
+# FriendsOfSymfony/FOSOAuthServerBundle
+fos_oauth_server:
+    db_driver: orm       
+    client_class:        fortuneBundle\Entity\Client
+    access_token_class:  fortuneBundle\Entity\AccessToken
+    refresh_token_class: fortuneBundle\Entity\RefreshToken
+    auth_code_class:     fortuneBundle\Entity\AuthCode

@@ -22,7 +22,8 @@
         "friendsofsymfony/rest-bundle": "dev-master",
         "jms/serializer-bundle": "dev-master",
         "eightpoints/guzzle-bundle": "dev-master",
-        "hipaway-travel/mandrill-bundle": "dev-master"
+        "hipaway-travel/mandrill-bundle": "dev-master",
+        "friendsofsymfony/oauth-server-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
