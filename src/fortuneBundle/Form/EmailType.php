@@ -15,7 +15,6 @@ class EmailType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('email')
-                ->setMethod('POST')
         ;
     }
 

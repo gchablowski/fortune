@@ -37,7 +37,7 @@ class DefaultController extends FOSRestController {
      * @param Request $request
      * @return array() with a form
      *
-     * @Post("/add/email", name="email_add")
+     * @Post("/email/add", name="email_add")
      */
     public function emailsAction(Request $request) {
         //create new object
@@ -83,8 +83,8 @@ class DefaultController extends FOSRestController {
      * @param Request $request
      * @return array() with a message
      *
-     * @Put("/activate/email/{token}", name="email_activate",defaults={"activate" = true})
-     * @Put("/desactivate/email/{token}", name="email_desactivate", defaults={"activate" = false})
+     * @Put("/email/activate/{token}", name="email_activate",defaults={"activate" = true})
+     * @Put("/email/desactivate/{token}", name="email_desactivate", defaults={"activate" = false})
      */
     public function emailsActivationAction(Request $request, $token, $activate) {
         // get email object

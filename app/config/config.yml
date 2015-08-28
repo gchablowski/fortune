@@ -37,6 +37,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         urlFrontValidate: "%urlFrontValidate%"
+        urlFrontDesactivate: "%urlFrontDesactivate%"
 
 # Assetic Configuration
 assetic:

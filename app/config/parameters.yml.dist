@@ -24,3 +24,4 @@ parameters:
     
     # url for the email that validate the inscription of the email
     urlfrontvalidate : ~
+    urlFrontDesactivate: ~
