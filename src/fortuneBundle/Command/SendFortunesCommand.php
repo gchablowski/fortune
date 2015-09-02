@@ -15,7 +15,7 @@ class SendFortunesCommand extends ContainerAwareCommand {
 
     protected function configure() {
         $this
-                ->setName('SendFortunes')
+                ->setName('fortune:SendFortunes')
                 ->setDescription('Send fortunes')
         ;
     }

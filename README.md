@@ -1,72 +1,31 @@
-Symfony Standard Edition
+Fortune Rest API
 ========================
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony2
-application that you can use as the skeleton for your new applications.
+Some Rest Api developed with symphony 2.
+The aim was to create a service where some client register and receive an email with a new quote every day.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
+It use :
+FOSOAuthServerBundle
+FosRestBundle
+8p/GuzzleBundle
+HipMandrillBundle
 
-What's inside?
---------------
+OAuth 2 is use with client_credentials grant to give a token to the front-end client (/oauth/v2/token/client_id=XXX&client_secret=XXX&grant=client_credentials).
 
-The Symfony Standard Edition is configured with the following defaults:
+A bundle call Fortune Bundle which define :
+3 command line :
+fortune:oauth-server:client:create (to create some oath client)
+fortune:getQuote (to get a quote from a service access by GuzzleBundle)
+fortune:setQuote (to register a new quote on the database)
+fortune:SendFortunes (to send the fortune mail to the Mandrill service)
 
-  * An AppBundle you can use to start coding;
+The controller define 4 routes :
+/quotes (GET the list of all the quote in database order by date accessible)
+/email/register (to save an email with a POST)
+/email/activate/:token (to activate mail in database with PUT)
+/email/desactivate/:token (to desactivate mail in database with PUT)
 
-  * Twig as the only configured template engine;
+you may find the angular-js client here : https://github.com/gchablowski/fortune-angular
 
-  * Doctrine ORM/DBAL;
 
-  * Swiftmailer;
-
-  * Annotations enabled for everything.
-
-It comes pre-configured with the following bundles:
-
-  * **FrameworkBundle** - The core Symfony framework bundle
-
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
-
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
-
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
-
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
-
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * [**AsseticBundle**][12] - Adds support for Assetic, an asset processing
-    library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev/test env) - Adds code generation
-    capabilities
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/2.7/book/installation.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/2.7/book/doctrine.html
-[8]:  https://symfony.com/doc/2.7/book/templating.html
-[9]:  https://symfony.com/doc/2.7/book/security.html
-[10]: https://symfony.com/doc/2.7/cookbook/email.html
-[11]: https://symfony.com/doc/2.7/cookbook/logging/monolog.html
-[12]: https://symfony.com/doc/2.7/cookbook/assetic/asset_management.html
-[13]: https://symfony.com/doc/2.7/bundles/SensioGeneratorBundle/index.html
+Created by Gérald Chablowski.

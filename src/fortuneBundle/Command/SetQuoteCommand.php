@@ -13,7 +13,7 @@ class SetQuoteCommand extends ContainerAwareCommand {
 
     protected function configure() {
         $this
-                ->setName('setQuote')
+                ->setName('fortune:setQuote')
                 ->setDescription('set a quote')
                 ->addArgument(
                         'text', InputArgument::REQUIRED, 'text of the quote'

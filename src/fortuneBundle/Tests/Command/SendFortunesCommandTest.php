@@ -18,7 +18,7 @@ class SendFortunesCommandTest extends KernelTestCase {
         $application->add(new SendFortunesCommand());
         
 
-        $command = $application->find('SendFortunes');
+        $command = $application->find('fortune:SendFortunes');
         $commandTester = new CommandTester($command);
         $commandTester->execute(array('command' => $command->getName()));
 

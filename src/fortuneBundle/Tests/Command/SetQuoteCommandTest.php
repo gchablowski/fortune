@@ -26,7 +26,7 @@ class SetQuoteCommandTest extends KernelTestCase {
         $application->add(new GetQuoteCommand());
         $application->add(new SetQuoteCommand());
 
-        $command = $application->find('setQuote');
+        $command = $application->find('fortune:setQuote');
         $commandTester = new CommandTester($command);
         $commandTester->execute(
                 array('command' => $command->getName(),

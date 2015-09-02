@@ -13,7 +13,7 @@ class GetQuoteCommand extends ContainerAwareCommand {
 
     protected function configure() {
         $this
-                ->setName('getQuote')
+                ->setName('fortune:getQuote')
                 ->setDescription('get a quote from a service')
         ;
     }
